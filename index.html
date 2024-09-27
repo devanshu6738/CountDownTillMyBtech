@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2027</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+        }
+        .container {
+            text-align: center;
+        }
+        .countdowntimer {
+            font-size: 3rem;
+            font-weight: bold;
+            padding: 20px;
+            background-color: #222;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Btech End In</h1>
+        <div class="countdowntimer" id="countdown1"></div>
+    </div>
+
+    <script>
+        const targetTime=new Date('2027-01-01T00:00:00');
+        function UpdateCountDown(){
+            const currentDate=new Date();
+            const TimeDifference=targetTime-currentDate;
+            const Days=Math.floor(TimeDifference/(1000*60*60*24));
+            const Hours=Math.floor((TimeDifference%(1000*60*60*24))/(1000*60*60));
+            const Mins=Math.floor((TimeDifference%(1000*60*60))/(1000*60));
+            const sec=Math.floor((TimeDifference%(1000*60))/1000);
+            document.getElementById("countdown1").innerHTML=`${Days}d ${Hours}h ${Mins}m ${sec}s`;
+            setTimeout(UpdateCountDown,1000);
+        }
+        UpdateCountDown();
+    </script>
+</body>
+</html>
